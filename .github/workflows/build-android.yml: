@@ -1,0 +1,53 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Set up Android SDK & NDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK and CMake
+        run: |
+          sdkmanager --install "ndk;25.1.8937393" "cmake;3.22.1"
+
+      - name: Install Dependencies
+        run: |
+          npm install
+          cd apps/mobile && npm install
+
+      - name: Prebuild Android Native Files
+        run: |
+          cd apps/mobile
+          npx expo prebuild --platform android
+
+      - name: Build Android Release APK
+        run: |
+          cd apps/mobile/android
+          ./gradlew assembleRelease --no-daemon
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mindwtr-localai-pixel
+          path: apps/mobile/android/app/build/outputs/apk/release/app-release-unsigned.apk
