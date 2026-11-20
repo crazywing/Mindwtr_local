@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Mindwtr",
-    "slug": "mindwtr",
+    "name": "Mindwtr Local",
+    "slug": "mindwtr-local",
     "version": "1.3.9",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "mindwtr",
+    "scheme": "mindwtr-local",
     "userInterfaceStyle": "automatic",
     "jsEngine": "hermes",
     "newArchEnabled": true,
@@ -79,7 +79,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "versionCode": 161,
-      "package": "tech.dongdongbh.mindwtr",
+      "package": "tech.dongdongbh.mindwtr.local",
       "permissions": [
         "RECORD_AUDIO",
         "POST_NOTIFICATIONS",
