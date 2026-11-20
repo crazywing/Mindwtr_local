@@ -12,10 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Bun
+      - name: Set up Bun from repo config
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version-file: ".bun-version"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -34,7 +34,7 @@ jobs:
 
       - name: Install Dependencies with Bun
         run: |
-          bun install --frozen-lockfile
+          bun install
 
       - name: Prebuild Android Native Project
         run: |
