@@ -1,0 +1,4 @@
+dependencies {
+    // Sherpa-ONNX Android library with bundled native ONNX runtime binaries
+    implementation("com.k2fsa.sherpa.onnx:sherpa-onnx:1.10.30")
+}
