@@ -1,4 +1,11 @@
 {
+  "name": "mindwtr-monorepo",
+  "trustedDependencies": [
+    "llama.rn"
+  ],
+  ...
+}
+{
   "name": "mobile",
   "license": "AGPL-3.0-only",
   "main": "index.js",
